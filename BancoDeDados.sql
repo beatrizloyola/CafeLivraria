@@ -18,8 +18,14 @@ CREATE TABLE livro(
 	titulo VARCHAR(256),
     id INT PRIMARY KEY NOT NULL,
     autor VARCHAR(256),
-    capa VARCHAR(256)
+    edicao VARCHAR(256)
 );
 
-USE cafe;
+CREATE TABLE doacao(
+	titulo VARCHAR(256),
+    id INT PRIMARY KEY NOT NULL,
+    autor VARCHAR(256),
+    edicao VARCHAR(256)
+);
+
 INSERT INTO usuario (usuario, senha) VALUES ("bea", "bea");

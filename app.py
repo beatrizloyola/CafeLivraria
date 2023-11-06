@@ -39,8 +39,22 @@ def biblioteca():
 def doacao():
     return render_template("Doação.html")
 
+@app.route('/formcadastro')
+def formcadastro():
+    return render_template("Cadastrar.html")
+
+@app.route('/sucesso')
+def sucesso():
+    titulo = request.form['titulo']
+    edicao = request.form['edicao']
+    autor = request.form['autor']
+    cursor.execute("INSERT INTO doacao (titulo, autor, edicao) VALUES (%s, %s, %s)", (titulo, autor, edicao))
+    connection.commit()
+    return render_template("Sucesso.html")
+
 @app.route('/processar', methods=['POST'])
 def processar_formulario():
+    cursor.reset()
     usuario = request.form['usuario']
     senha = request.form['senha']
     cursor.execute("SELECT * FROM usuario WHERE usuario = %s", (usuario,))
@@ -55,8 +69,8 @@ def adicionar_produto():
     nome = request.form.get('nome')
     id = request.form.get('id')
     preco = request.form.get('preco')
-    imagem = request.form.get('imagem')
-    cursor.execute("INSERT INTO produtos (nome, id, preco, imagem) VALUES (%s, %s, %s, %s)", (nome, id, preco, imagem))
+    categoria = request.form.get('categoria')
+    cursor.execute("INSERT INTO produto (nome, id, preco, categoria) VALUES (%s, %s, %s, %s)", (nome, id, preco, categoria))
     connection.commit()
     return cardapio()
 

@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Doe um livro</title>
-        <!--Conectando com o Bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -10,16 +9,13 @@
         <meta charset="UTF-8">
     </head>
     <body>
-
-        <!--Cabeçalho-->
         <div class="jumbotron">
             <h1 style="text-align: center; font-family: Palace Script MT;">Cafeteria & Livraria</h1><br>
             <h3 style="text-align: center; color: grey; font-family: Javanese Text;">Doe um livro, ganhe um café <span class="glyphicon glyphicon-heart"></span></h3>
         </div>
-
-        <!--Forms para doação de livros-->
+        
         <div class="container">
-            <form action="Sucesso.html" onsubmit="salvar()">
+            <form action="/sucesso" onsubmit="salvar()">
                 <label for="titulo">Título:</label><br>
                 <input type="text" id="titulo" name="titulo"><br>
                 <label for="autor">Autor:</label><br>
@@ -33,10 +29,8 @@
             <br>
             <a href="/biblioteca">Voltar para a Biblioteca</a>
         </div>
-
     </body>
 
-    <!--JavaScript, não mexer!-->
     <script>
         function salvar(){
         var titulo = document.getElementById("titulo").value;
@@ -47,5 +41,4 @@
         localStorage.setItem("edicao", edicao);
         }
     </script>
-
 </html>
