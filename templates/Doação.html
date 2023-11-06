@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doe um livro</title>
+        <!--Conectando com o Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        <!--Cabeçalho-->
+        <div class="jumbotron">
+            <h1 style="text-align: center; font-family: Palace Script MT;">Cafeteria & Livraria</h1><br>
+            <h3 style="text-align: center; color: grey; font-family: Javanese Text;">Doe um livro, ganhe um café <span class="glyphicon glyphicon-heart"></span></h3>
+        </div>
+
+        <!--Forms para doação de livros-->
+        <div class="container">
+            <form action="Sucesso.html" onsubmit="salvar()">
+                <label for="titulo">Título:</label><br>
+                <input type="text" id="titulo" name="titulo"><br>
+                <label for="autor">Autor:</label><br>
+                <input type="text" id="autor" name="autor"><br>
+                <label for="edicao">Edição:</label><br>
+                <input type="text" id="edicao" name="edicao"><br>
+                <br><input type="submit" value="Submeter!">
+            </form>
+        </div>
+        <div class="container" style="text-align: center; font-family: Javanese Text; color: grey; text-decoration: underline;">
+            <br>
+            <a href="Biblioteca.html">Voltar para a Biblioteca</a>
+        </div>
+
+    </body>
+
+    <!--JavaScript, não mexer!-->
+    <script>
+        function salvar(){
+        var titulo = document.getElementById("titulo").value;
+        localStorage.setItem("titulo", titulo);
+        var autor = document.getElementById("autor").value;
+        localStorage.setItem("autor", autor);
+        var edicao = document.getElementById("edicao").value;
+        localStorage.setItem("edicao", edicao);
+        }
+    </script>
+
+</html>

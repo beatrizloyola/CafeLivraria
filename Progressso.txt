@@ -1,0 +1,17 @@
+Semanas 1 e 2
+
+Progresso:
+    - Definição do tema do projeto: Cafeteria + Livraria
+    - Início da programação do Backend na linguagem de programação Python e do Frontend na linguagem JavaScript
+    - Criação da primeira versão/rascunho das principais páginas (Página Inicial, Cardápio, Acervo de Livros/Biblioteca, Doação de Livros e Sucesso Na Doação)
+    - Divisão/categorização do cardápio em Bebidas, Doces e Salgados em diferentes páginas
+
+Planos para o resto da semana:
+    
+    - Salvamento das doações e respectivos doadores em um banco de dados
+    - Login de funcionários que poderiam gerenciar (CRUD) pedidos e doações através do site
+    - Forms com bootstrap
+
+Maiores dificuldades:
+    - Organização e Versionamento -> Solução proposta: GitHub
+    - Exibição das informações do banco de dados no site de maneira coesa -> Solução proposta: Pesquisar novas tecnologias e estudar Backend mais a fundo
