@@ -11,7 +11,7 @@ CREATE TABLE produto(
 	nome VARCHAR(50),
     id INT PRIMARY KEY NOT NULL,
     preco DOUBLE,
-    imagem VARCHAR(256)
+    categoria INT
 );
 
 CREATE TABLE livro(
@@ -20,3 +20,6 @@ CREATE TABLE livro(
     autor VARCHAR(256),
     capa VARCHAR(256)
 );
+
+USE cafe;
+INSERT INTO usuario (usuario, senha) VALUES ("bea", "bea");

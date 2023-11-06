@@ -17,37 +17,50 @@
             <h3 style="text-align: center; color: grey; font-family: Javanese Text;">Nosso cardápio:</h3>
         </div>
 
-        <!--
-        Divide o Site em 3 colunas, uma para cada item. Em caso de mais itens, criar mais linhas
-        Para criar mais linhas, começa a copiar as linhas 26 a 42 (a div inteira) e colar embaixo dos <br>!
-        Para trocar a imagem, muda o link do SRC. Para trocar o nome e o preço, muda o <p>
-        -->
         <div class="container">
-            <div class="row" style="text-align: center; font-family: Javanese Text; color: grey;">
-                <div class="col-sm-4">
-                    <img src="https://i.pinimg.com/564x/8e/5c/72/8e5c72593021e7342932b9da5f6d71db.jpg" style="height: 300px;">
-                    <br>
-                    <a href="Bebidas.html">Bebidas</a>
-                </div>
-                <div class="col-sm-4">
-                    <img src="https://i.pinimg.com/564x/22/80/d7/2280d7cf6113e583fbea085623b73e2f.jpg" style="height: 300px;">
-                    <br>
-                    <a href="Salgados.html">Salgados</a>
-                </div>
-                <div class="col-sm-4">
-                    <img src="https://i.pinimg.com/564x/b0/78/ce/b078ce6a30f999eed2dee5ca46c639be.jpg" style="height: 300px;">
-                    <br>
-                    <a href="Doces.html">Doces</a>
-                </div>
-            </div>
+            <h2>Salgados</h2>
+            <table id="salgados" class="table table-striped table-bordered">
+                <!-- ... corpo da tabela ... -->
+            </table>
+
+            <h2>Doces</h2>
+            <table id="doces" class="table table-striped table-bordered">
+                <!-- ... corpo da tabela ... -->
+            </table>
+
+            <h2>Bebidas</h2>
+            <table id="bebidas" class="table table-striped table-bordered">
+                <!-- ... corpo da tabela ... -->
+            </table>
+
             <br><br><br>
-            <div class="container" style="text-align: center; font-family: Javanese Text; color: grey; text-decoration: underline;">
-                <br>
-                <a href="PaginaInicial.html">Voltar para a Página Inicial</a>
-            </div>
+        
+            <a href="/">Voltar para a Página Inicial</a>
         </div>
 
     </body>
-</html>
 
-<!--Ainda quero dividir tudo entre salgados, doces e bebidas. Melhor não alterar essa página ainda.-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        function preencherTabela(categoria, idTabela) {
+            var tabela = document.getElementById(idTabela).getElementsByTagName('tbody')[0];
+            fetch('/dados?categoria=' + categoria)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(function(item) {
+                        var novaLinha = tabela.insertRow();
+                        var celulaNome = novaLinha.insertCell(0);
+                        var celulaPreco = novaLinha.insertCell(1);
+                        celulaNome.innerHTML = item.nome;
+                        celulaPreco.innerHTML = item.preco;
+                    });
+                });
+        }
+
+        preencherTabela(1, 'salgados');
+        preencherTabela(2, 'doces');
+        preencherTabela(3, 'bebidas');
+    });
+
+    </script>
+</html>

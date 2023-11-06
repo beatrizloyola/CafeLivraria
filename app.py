@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, jsonify
 from mysql.connector import connect, Error
 
 app = Flask(__name__)
@@ -20,8 +20,24 @@ connection = mysql_connection('localhost', 'root', 'root', 'cafe')
 cursor = connection.cursor()
     
 @app.route('/')
-def formulario():
-    return render_template('Login.html')
+def inicio():
+    return render_template('PaginaInicial.html')
+
+@app.route('/cardapio')
+def cardapio():
+    return render_template("Cardapio.html")
+
+@app.route('/login')
+def login():
+    return render_template("Login.html")
+
+@app.route('/biblioteca')
+def biblioteca():
+    return render_template("Biblioteca.html")
+
+@app.route('/doacao')
+def doacao():
+    return render_template("Doação.html")
 
 @app.route('/processar', methods=['POST'])
 def processar_formulario():
@@ -32,7 +48,7 @@ def processar_formulario():
     if(resultado != None and resultado[1] == senha):
         return render_template('GerenciarProdutos.html')
     else:
-        return render_template('Login.html')
+        return login()
 
 @app.route('/cadastrar', methods=['POST'])
 def adicionar_produto():
@@ -42,7 +58,7 @@ def adicionar_produto():
     imagem = request.form.get('imagem')
     cursor.execute("INSERT INTO produtos (nome, id, preco, imagem) VALUES (%s, %s, %s, %s)", (nome, id, preco, imagem))
     connection.commit()
-    return render_template('Cardapio.html')
+    return cardapio()
 
 @app.route('/editar', methods=['POST'])
 def editar_produto():
@@ -52,14 +68,19 @@ def editar_produto():
     imagem = request.form.get('imagem')
     cursor.execute("UPDATE produtos SET nome = %s, preco = %s, imagem = %s WHERE id = %s", (nome, preco, imagem, id,))
     connection.commit()
-    return render_template('Cardapio.html')
+    return cardapio()
 
 @app.route('/deletar')
 def deletar_produto():
     id = request.form.get('id')
     cursor.execute("DELETE FROM produtos WHERE id = %s")
     connection.commit()
-    return render_template('Cardapio.html')
+    return cardapio()
+
+@app.route('/dados')
+def obter_dados():
+    dados = cursor.execute("SELECT * FROM produto")
+    return jsonify(dados)
 
 if __name__ == '__main__':
     app.run(debug=True)
