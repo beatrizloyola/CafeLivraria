@@ -1,0 +1,18 @@
+body{
+    text-align: center;
+    color: grey;
+    font-family: Javanese Text;
+}
+
+h1{
+    font-family: Palace Script MT;
+}
+
+img{
+    height: 300px;
+}
+
+#reciboDoacao{
+    background-image: url(https://i.pinimg.com/564x/ca/f5/76/caf576172c3723cd41320eaa2932bcae.jpg);
+    background-repeat: no-repeat;
+}
